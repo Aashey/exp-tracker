@@ -4,29 +4,9 @@ import { useEffect, useState } from "react";
 import { CapitalizeStarting } from "../../helpers/capitalize";
 import { expenseSources, incomeSources } from "../../helpers/sourceDatas";
 import FormDebug from "../../helpers/formDebug";
-// const formReducer = (state, action) => {
-//   switch (action.type) {
-//     case "SET_FIELD":
-//       return {
-//         ...state,
-//         formField: {
-//           ...state.formField,
-//           [action.payload.name]: action.payload.value,
-//         },
-//       };
-//     case "RESET_FORM":
-//       return {
-//         formField: {},
-//       };
-//     default:
-//       return state;
-//   }
-// };
 
 const FinanceForm = ({ type, closeDrawer, drawerOpen }) => {
-  // const [state, dispatch] = useReducer(formReducer, {
-  //   formField: {},
-  // });
+
   const [form] = Form.useForm();
   const { Title, Text, Link } = Typography;
   const [formData, setFormData] = useState([]);
