@@ -27,6 +27,12 @@ const FinancialTable = ({ tableData }) => {
       key: "other_source",
     },
     {
+      title: "Amount",
+      dataIndex: "amount",
+      key: "amount",
+      render: (value) => `Rs. ${value}`,
+    },
+    {
       title: "Remarks",
       dataIndex: "remarks",
       key: "remarks",
