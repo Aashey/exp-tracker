@@ -5,8 +5,7 @@ import { CapitalizeStarting } from "../../helpers/capitalize";
 import { expenseSources, incomeSources } from "../../helpers/sourceDatas";
 import FormDebug from "../../helpers/formDebug";
 
-const FinanceForm = ({ type, closeDrawer, drawerOpen }) => {
-
+const FinanceForm = ({ type, closeDrawer, drawerOpen, onSave }) => {
   const [form] = Form.useForm();
   const { Title, Text, Link } = Typography;
   const [formData, setFormData] = useState([]);
@@ -19,7 +18,8 @@ const FinanceForm = ({ type, closeDrawer, drawerOpen }) => {
       other_source: null,
       ...value,
     };
-    setFormData([...formData, updatedValue]);
+    // setFormData([...formData, updatedValue]);
+    onSave(updatedValue);
     closeDrawer();
   };
 
