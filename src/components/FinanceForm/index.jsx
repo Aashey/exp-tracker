@@ -1,13 +1,4 @@
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  Typography,
-} from "antd";
+import { Button, Form, Input, InputNumber, Select, Typography } from "antd";
 import { incomeSources, expenseSources } from "../../helpers/sourceDatas";
 import { useEffect, useReducer, useState } from "react";
 import { CapitalizeStarting } from "../../helpers/capitalize";
