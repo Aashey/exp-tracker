@@ -3,6 +3,7 @@ import IncomeForm from "../../components/Income";
 import ExpenseForm from "../../components/Expense";
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
+import TabPane from "antd/es/tabs/TabPane";
 const Finance = () => {
   const [tabKey, setTabKey] = useState("income");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -31,20 +32,20 @@ const Finance = () => {
           open={isDrawerOpen}
         >
           <Tabs onChange={handleTabChange}>
-            <items key="income" tab="Income">
+            <TabPane key="income" tab="Income">
               <IncomeForm
                 drawerOpen={isDrawerOpen}
                 closeDrawer={closeDrawer}
                 type={tabKey}
               />
-            </items>
-            <items key="expense" tab="Expense">
+            </TabPane>
+            <TabPane key="expense" tab="Expense">
               <ExpenseForm
                 drawerOpen={isDrawerOpen}
                 closeDrawer={closeDrawer}
                 type={tabKey}
               />
-            </items>
+            </TabPane>
           </Tabs>
         </Drawer>
       </Card>

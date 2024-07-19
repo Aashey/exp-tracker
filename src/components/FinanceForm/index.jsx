@@ -1,17 +1,9 @@
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  Typography,
-} from "antd";
-import { incomeSources, expenseSources } from "../../helpers/sourceDatas";
-import { useEffect, useReducer, useState } from "react";
-import { CapitalizeStarting } from "../../helpers/capitalize";
 import { InfoCircleOutlined } from "@ant-design/icons";
+import { Button, Form, Input, InputNumber, Select, Typography } from "antd";
+import { useEffect, useState } from "react";
+import { CapitalizeStarting } from "../../helpers/capitalize";
+import { expenseSources, incomeSources } from "../../helpers/sourceDatas";
+import FormDebug from "../../helpers/formDebug";
 // const formReducer = (state, action) => {
 //   switch (action.type) {
 //     case "SET_FIELD":
@@ -38,7 +30,7 @@ const FinanceForm = ({ type, closeDrawer, drawerOpen }) => {
   const [form] = Form.useForm();
   const { Title, Text, Link } = Typography;
   const [formData, setFormData] = useState([]);
-  const [otherSelected, setOtherSelected] = useState(false);
+  const otherSelected = Form.useWatch("source", form) === "others";
 
   const handleFormSubmit = (value) => {
     const updatedValue = {
@@ -48,29 +40,12 @@ const FinanceForm = ({ type, closeDrawer, drawerOpen }) => {
       ...value,
     };
     setFormData([...formData, updatedValue]);
-    form.resetFields();
     closeDrawer();
   };
-  // const handleInputChange = (e) => {
-  //   dispatch({
-  //     type: "SET_FIELD",
-  //     payload: { name: e.name, value: e.value },
-  //   });
-  // };
+
   useEffect(() => {
     form.resetFields();
-    setOtherSelected(false);
   }, [type, drawerOpen]);
-
-  const onValuesChange = (changedValues, allValues) => {
-    // console.log(changedValues);
-    console.log({ ...allValues, type: type });
-    if (allValues.source === "others") {
-      setOtherSelected(true);
-    } else {
-      setOtherSelected(false);
-    }
-  };
 
   const initial_form_values = {};
   return (
@@ -80,9 +55,7 @@ const FinanceForm = ({ type, closeDrawer, drawerOpen }) => {
         form={form}
         layout="vertical"
         initialValues={initial_form_values}
-        onValuesChange={onValuesChange}
       >
-        <pre>{JSON.stringify(formData, null, 2)}</pre>
         <Form.Item
           name="source"
           label={<Text strong>Select an {type} source</Text>}
