@@ -1,11 +1,11 @@
-import Finance from "./pages/financials";
+// import Finance from "./pages/financials";
 
-function App() {
-  return (
-    <>
-      <Finance />
-    </>
-  );
-}
+// function App() {
+//   return (
+//     <>
+//       <Finance />
+//     </>
+//   );
+// }
 
-export default App;
+// export default App;
